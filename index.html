@@ -644,7 +644,7 @@
     .item-name {
       font-weight: 600;
       margin: 0 0 4px 0;
-      font-size: 15px;
+      font-size: 35px;
     }
 
     .item-price {
@@ -1145,16 +1145,15 @@
   <script>
     // Menu Data
     const data = [
-      {"id":1,"cat":"Breakfast","name":"पोहा / Poha","price":"₹30","desc":"Poha","tags":["Vegetarian"],"img":"img/poha.jpeg"},
-      {"id":2,"cat":"Breakfast","name":"शिरा / Shira","price":"₹30","desc":"Shira","tags":["Vegetarian"],"img":"img/shira.jpeg"},
-      {"id":3,"cat":"Breakfast","name":"उपमा / Upama","price":"₹30","desc":"Upama","tags":["Vegetarian"],"img":"img/upama.jpeg"},
-      {"id":4,"cat":"Breakfast","name":"साबुदाणा खिचड़ी / Shabudana Khichadi","price":"₹30","desc":"Shabudana Khichadi","tags":["Vegetarian"],"img":"img/shabudana_khichadi.jpeg"},
-      {"id":5,"cat":"Thali","name":"वेज थाली / Veg Thali","price":"₹80","desc":"4 Chapati, Rice, 2 Bhaji, Salad, Dal and Dahi","tags":["Vegetarian"],"img":"img/veg_thali.jpeg"},
-      {"id":6,"cat":"Thali","name":"चिकन थाली / Chicken Thali","price":"₹130","desc":"Chicken Fry (1 plate), Rassa Plate, Salad, 4 Chapati and Rice","tags":["Non-Vegetarian"],"img":"img/chicken_thali.jpeg"},
-      {"id":7,"cat":"Thali","name":"अंडा थाली / Egg Thali","price":"₹100","desc":"2 Egg, Egg Rassa, 4 Chapati and Rice Plate","tags":["Non-Vegetarian"],"img":"img/egg_thali.jpeg"},
-      {"id":8,"cat":"Thali","name":"मटन थाली / Mutton Thali","price":"₹190","desc":"1 Mutton Plate, Rassa Plate, 4 Chapati, Rice Plate and Salad","tags":["Non-Vegetarian"],"img":"img/mutton_thali.jpeg"},
-    ];
-
+{"id":1,"cat":"Breakfast","name":"ಅವಲಕ್ಕಿ / Poha","price":"₹30","desc":"Poha","tags":["Vegetarian"],"img":"img/poha.jpeg"},
+{"id":2,"cat":"Breakfast","name":"ಶಿರಾ / Shira","price":"₹30","desc":"Shira","tags":["Vegetarian"],"img":"img/shira.jpeg"},
+{"id":3,"cat":"Breakfast","name":"ಉಪ್ಮಾ / Upma","price":"₹30","desc":"Upma","tags":["Vegetarian"],"img":"img/upama.jpeg"},
+{"id":4,"cat":"Breakfast","name":"ಸಬ್ಬಕ್ಕಿ ಖಿಚಡಿ / Sabudana Khichadi","price":"₹30","desc":"Sabudana Khichadi","tags":["Vegetarian"],"img":"img/shabudana_khichadi.jpeg"},
+{"id":5,"cat":"Thali","name":"ಶಾಕಾಹಾರಿ ಥಾಳಿ / Veg Thali","price":"₹80","desc":"4 Chapati, Rice, 2 Bhaji, Salad, Dal and Dahi","tags":["Vegetarian"],"img":"img/veg_thali.jpeg"},
+{"id":6,"cat":"Thali","name":"ಚಿಕನ್ ಥಾಳಿ / Chicken Thali","price":"₹130","desc":"Chicken Fry (1 plate), Rassa Plate, Salad, 4 Chapati and Rice","tags":["Non-Vegetarian"],"img":"img/chicken_thali.jpeg"},
+{"id":7,"cat":"Thali","name":"ಮೊಟ್ಟೆ ಥಾಳಿ / Egg Thali","price":"₹100","desc":"2 Egg, Egg Rassa, 4 Chapati and Rice Plate","tags":["Non-Vegetarian"],"img":"img/egg_thali.jpeg"},
+{"id":8,"cat":"Thali","name":"ಮಟನ್ ಥಾಳಿ / Mutton Thali","price":"₹190","desc":"1 Mutton Plate, Rassa Plate, 4 Chapati, Rice Plate and Salad","tags":["Non-Vegetarian"],"img":"img/mutton_thali.jpeg"}
+];
     // Cart functionality
     let cart = [];
     let deliveryType = 'restaurant'; // Default to restaurant
