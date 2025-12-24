@@ -1149,8 +1149,6 @@
   <script>
     // Menu Data
     const data = [
-
-
   {"id": 1, "cat": "NON VEG", "name": "1) PATEL'S SPECIAL CHICKEN GHEE ROAST", "price": "Rs 300", "type": "Plate", "desc": "Patel's special chicken ghee roast.", "tags": ["Non-Veg", "Chicken", "Starter"], "img": "img/chicken_ghee_roast.jpeg"},
   {"id": 2, "cat": "NON VEG", "name": "2) Chicken 65", "price": "Rs 200", "type": "Plate", "desc": "Spicy deep-fried chicken 65.", "tags": ["Non-Veg", "Chicken", "Starter"], "img": "img/chicken_65.jpeg"},
   {"id": 3, "cat": "NON VEG", "name": "3) Paper Chicken", "price": "Rs 250", "type": "Plate", "desc": "Crispy paper chicken.", "tags": ["Non-Veg", "Chicken", "Starter"], "img": "img/paper_chicken.jpeg"},
@@ -1268,13 +1266,8 @@
   {"id": 115, "cat": "SPECIALS", "name": "115) Garlic Kabaab", "price": "Rs 350", "type": "Plate", "desc": "Garlic kabaab.", "tags": ["Non-Veg", "Chicken", "Special", "Starter"], "img": "img/garlic_kabaab.jpeg"},
   {"id": 116, "cat": "SPECIALS", "name": "116) Paneer Malai Tikka", "price": "Rs 250", "type": "Plate", "desc": "Paneer malai tikka.", "tags": ["Veg", "Paneer", "Special", "Starter"], "img": "img/paneer_malai_tikka.jpeg"},
   {"id": 117, "cat": "SPECIALS", "name": "117) Malai Kabaab", "price": "Rs 350", "type": "Plate", "desc": "Malai kabaab.", "tags": ["Non-Veg", "Chicken", "Special", "Starter"], "img": "img/malai_kabaab.jpeg"},
-
-
-
-
-
-      
-];
+    ];
+    
     // Cart functionality
     let cart = [];
     let deliveryType = 'restaurant'; // Default to restaurant
@@ -1288,6 +1281,11 @@
     const clearCart = document.getElementById('clearCart');
     const whatsappOrder = document.getElementById('whatsappOrder');
     const customerDetailsSummary = document.getElementById('customerDetailsSummary');
+
+    // Helper function to parse price
+    function parsePrice(priceStr) {
+      return parseInt(priceStr.replace('Rs ', '').replace('₹', '').trim()) || 0;
+    }
 
     // Delivery option selection
     function selectDeliveryOption(type) {
@@ -1382,6 +1380,7 @@
           id: item.id,
           name: item.name,
           price: item.price,
+          priceNumber: parsePrice(item.price),
           quantity: 1
         });
       }
@@ -1442,8 +1441,8 @@
         let totalAmount = 0;
         
         cart.forEach(item => {
-          const price = parseInt(item.price.replace('₹', ''));
-          const itemTotal = price * item.quantity;
+          // Use priceNumber for calculation
+          const itemTotal = (item.priceNumber || parsePrice(item.price)) * item.quantity;
           totalAmount += itemTotal;
           
           itemsHTML += `
@@ -1528,16 +1527,26 @@
       
       message += `**Order Details:**\n`;
       
+      // Calculate total
+      let totalAmount = 0;
+      
       cart.forEach(item => {
-        message += `• ${item.name} - ${item.quantity} x ${item.price}\n`;
+        const itemPrice = item.priceNumber || parsePrice(item.price);
+        const itemTotal = itemPrice * item.quantity;
+        totalAmount += itemTotal;
+        message += `• ${item.name} - ${item.quantity} x ${item.price} = ₹${itemTotal}\n`;
       });
       
-      const totalAmount = cart.reduce((sum, item) => {
-        const price = parseInt(item.price.replace('₹', ''));
-        return sum + (price * item.quantity);
-      }, 0);
+      message += `\n**Subtotal:** ₹${totalAmount}\n`;
       
-      message += `\n**Total Amount:** ₹${totalAmount}\n\n`;
+      // Add delivery charge if home delivery
+      if (deliveryType === 'home') {
+        const deliveryCharge = 50; // You can adjust this
+        message += `**Delivery Charge:** ₹${deliveryCharge}\n`;
+        totalAmount += deliveryCharge;
+      }
+      
+      message += `**Total Amount:** ₹${totalAmount}\n\n`;
       message += `Thank you!`;
       
       // Encode the message for WhatsApp URL
