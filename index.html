@@ -324,28 +324,38 @@
       color: var(--muted);
       font-size: 13px;
     }
+.search-container {
+  background: var(--glass);
+  backdrop-filter: blur(6px);
+  padding: 30px; /* ✅ Aur padding */
+  border-radius: 16px; /* ✅ Thoda bada border radius */
+  border: 2px solid rgba(212, 175, 55, 0.1); /* ✅ Golden border */
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
 
-    .search-container {
-      background: var(--glass);
-      backdrop-filter: blur(6px);
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      width: 300%;
-    }
+.search-container input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: inherit;
+  font-size: 22px; /* ✅ Aur bada font */
+  width: 100%;
+  padding: 15px 20px;
+  font-weight: 500;
+}
 
-    .search-container input {
-      background: transparent;
-      border: 0;
-      outline: 0;
-      color: inherit;
-      font-size: 50px;
-      width: 300%;
-    }
-
+.search-container svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--gold1);
+}
     /* Tabs Navigation - UPDATED STYLES */
     .tabs-container {
       position: relative;
